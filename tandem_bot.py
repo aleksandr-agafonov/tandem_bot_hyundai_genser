@@ -44,7 +44,6 @@ keyboard.add(get_today_stat)
 # Приветственный блок
 @dp.message_handler(commands=['start'])  # приветствуем и показываем клавиатуру
 async def say_hello(message: types.Message):
-    print(message)
     await message.answer('Привет! Чего изволите?', reply_markup=keyboard)
 # Приветственный блок
 
@@ -59,7 +58,6 @@ async def get_yandex_add_query(callback_query: types.CallbackQuery):
 
 @dp.message_handler(state=Actions.yandex_add_state)
 async def get_yandex_add_text(message: types.message, state: FSMContext):
-    print(message)
     if message.text != '/start':
         url = 'https://www.yandex.ru/search/ads?text='
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0'}
@@ -186,7 +184,6 @@ async def get_yandex_add_text(message: types.message, state: FSMContext):
 # запрашиваем стату за "вчера" из AZURE
 @dp.callback_query_handler(lambda c: c.data == 'c_get_yesterday_stat')
 async def yesterday_stat(callback_query: types.CallbackQuery):
-    print(callback_query)
     await bot.send_message(callback_query.from_user.id, 'Собираю информацию, подождите немного')
 
     try:
@@ -213,9 +210,7 @@ async def yesterday_stat(callback_query: types.CallbackQuery):
 # запрашиваем стату за "сегодня" из AZURE
 @dp.callback_query_handler(lambda c: c.data == 'c_get_today_stat')
 async def today_stat(callback_query: types.CallbackQuery):
-    print(callback_query)
     await bot.send_message(callback_query.from_user.id, 'Собираю информацию, подождите немного')
-
     try:
         # разбираем содержимое функции
         message = get_stat(get_adcost_today.read(), get_calls_today.read(), get_target_calls_today.read())
@@ -252,7 +247,6 @@ async def today_stat(callback_query: types.CallbackQuery):
 # запрашиваем стату за текущий месяц из AZURE
 @dp.callback_query_handler(lambda c: c.data == 'c_get_current_month_stat')
 async def current_month_stat(callback_query: types.CallbackQuery):
-    print(callback_query)
     await bot.send_message(callback_query.from_user.id, 'Собираю информацию, подождите немного')
 
     try:
@@ -277,7 +271,6 @@ async def current_month_stat(callback_query: types.CallbackQuery):
 # запрашиваем стату за прошлый месяц из AZURE
 @dp.callback_query_handler(lambda c: c.data == 'c_get_previous_month_stat')
 async def previous_month_stat(callback_query: types.CallbackQuery):
-    print(callback_query)
     await bot.send_message(callback_query.from_user.id, 'Собираю информацию, подождите немного')
 
     try:
@@ -302,12 +295,11 @@ async def previous_month_stat(callback_query: types.CallbackQuery):
 # запрашиваем стату за текущую неделю
 @dp.callback_query_handler(lambda c: c.data == 'c_get_current_week_stat')
 async def current_week_stat(callback_query: types.CallbackQuery):
-    print(callback_query)
     await bot.send_message(callback_query.from_user.id, 'Собираю информацию, подождите немного')
 
     try:
         # разбираем содержимое функции
-        message = get_stat(get_adcost_current_week.read(), get_calls_current_week.read(), get_target_calls_current_week.read())
+        message = get_stat(get_adcost_current_week, get_calls_current_week, get_target_calls_current_week)
         adcost = message[0][0]
         calls = message[1][0]
         target_calls = message[2][0]
@@ -328,7 +320,6 @@ async def current_week_stat(callback_query: types.CallbackQuery):
 @dp.message_handler(commands=['ip'])
 async def get_my_ip(callback_query: types.CallbackQuery):
     req = requests.get('https://api.myip.com/')
-    print(req.json())
     await bot.send_message(callback_query.from_user.id, req.json()['ip'])
     await bot.send_message(callback_query.from_user.id, 'Чего изволите?', reply_markup=keyboard)
 
