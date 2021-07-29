@@ -1,1 +1,1 @@
-worker: python3 TandemBot.py
+worker: python3 tandem_bot.py
