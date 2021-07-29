@@ -24,7 +24,7 @@ traffic_sources as (
 		id,
 		concat(source, ' / ', medium) as source_medium
 	from general_traffic
-	where concat(source, ' / ', medium) in ('yandex_tm / cpc', 'mytarget_tm / cpc')
+	where concat(source, ' / ', medium) in ('yandex_tm / cpc', 'mytarget_tm / cpc', 'Контекст_Яндекс_визитка / cpc')
 	group by id, source, medium 
 ),
 
@@ -70,5 +70,5 @@ select
 	simple_date,
 	count(distinct client_phone) as phones
 from join_table
-where source_medium in ('yandex_tm / cpc', 'mytarget_tm / cpc')
+where source_medium in ('yandex_tm / cpc', 'mytarget_tm / cpc', 'Контекст_Яндекс_визитка / cpc')
 group by simple_date
