@@ -11,7 +11,7 @@ driver_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DA
 # блок запросов за "вчера"
 get_adcost_yesterday = open('get_adcost_yesterday.sql').read()
 get_calls_yesterday = open('get_calls_yesterday.sql').read()
-get_target_calls_yesterday = open(r'get_target_calls_yesterday.sql').read()
+get_target_calls_yesterday = open('get_target_calls_yesterday.sql').read()
 
 # блок запросов за "сегодня"
 get_adcost_today = open('get_adcost_today.sql').read()
