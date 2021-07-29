@@ -13,29 +13,29 @@ except:
     pass
 
 # блок запросов за "вчера"
-get_adcost_yesterday = open('get_adcost_yesterday.sql').read()
-get_calls_yesterday = open('get_calls_yesterday.sql').read()
-get_target_calls_yesterday = open('get_target_calls_yesterday.sql').read()
+get_adcost_yesterday = open('get_adcost_yesterday.sql')
+get_calls_yesterday = open('get_calls_yesterday.sql')
+get_target_calls_yesterday = open('get_target_calls_yesterday.sql')
 
 # блок запросов за "сегодня"
-get_adcost_today = open('get_adcost_today.sql').read()
-get_calls_today = open('get_calls_yesterday.sql').read()
-get_target_calls_today = open('get_target_calls_today.sql').read()
+get_adcost_today = open('get_adcost_today.sql')
+get_calls_today = open('get_calls_yesterday.sql')
+get_target_calls_today = open('get_target_calls_today.sql')
 
 # Блок запросов за "этот месяц"
-get_adcost_current_month = open('get_adcost_current_month.sql').read()
-get_calls_current_month = open('get_calls_current_month.sql').read()
-get_target_calls_current_month = open('get_target_calls_current_month.sql').read()
+get_adcost_current_month = open('get_adcost_current_month.sql')
+get_calls_current_month = open('get_calls_current_month.sql')
+get_target_calls_current_month = open('get_target_calls_current_month.sql')
 
 # Блок запросов за "прошлый месяц"
-get_adcost_previous_month = open('get_adcost_previous_month.sql').read()
-get_calls_previous_month = open('get_calls_previous_month.sql').read()
-get_target_calls_previous_month = open('get_target_calls_previous_month.sql').read()
+get_adcost_previous_month = open('get_adcost_previous_month.sql')
+get_calls_previous_month = open('get_calls_previous_month.sql')
+get_target_calls_previous_month = open('get_target_calls_previous_month.sql')
 
 # Блок запросов за "эту неделю"
-get_adcost_current_week = open('get_adcost_current_week.sql').read()
-get_calls_current_week = open('get_calls_current_week.sql').read()
-get_target_calls_current_week = open('get_target_calls_current_week.sql').read()
+get_adcost_current_week = open('get_adcost_current_week.sql')
+get_calls_current_week = open('get_calls_current_week.sql')
+get_target_calls_current_week = open('get_target_calls_current_week.sql')
 
 
 # функция подключения и чтения из AZURE
@@ -57,4 +57,4 @@ def get_stat(adcost, calls, target_calls):
     except:
         return 'error'
 
-#print(get_stat(get_adcost_today, get_calls_today, get_target_calls_today))
+# print(get_stat(get_adcost_yesterday, get_calls_yesterday, get_target_calls_yesterday))
