@@ -328,7 +328,7 @@ async def current_week_stat(callback_query: types.CallbackQuery):
 @dp.message_handler(commands=['ip'])
 async def get_my_ip(callback_query: types.CallbackQuery):
     req = requests.get('https://api.myip.com/')
-    print(req.content.decode('utf-8'))
+    print(req.json())
     await bot.send_message(callback_query.from_user.id, req.json()['ip'])
     await bot.send_message(callback_query.from_user.id, 'Чего изволите?', reply_markup=keyboard)
 
