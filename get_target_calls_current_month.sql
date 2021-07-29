@@ -26,7 +26,7 @@ traffic_sources as (
 		id,
 		concat(source, ' / ', medium) as source_medium
 	from general_traffic
-	where concat(source, ' / ', medium) in ('yandex_tm / cpc', 'mytarget_tm / cpc', 'Контекст_Яндекс_визитка / cpc')
+	where concat(source, ' / ', medium) in ('yandex_tm / cpc', 'mytarget_tm / cpc', '{source}')
 	group by id, source, medium 
 ),
 
@@ -44,7 +44,7 @@ tags as (
 		tag_type,
 		name
 	from calltouch_calls_tags
-	where name like '%Покупка Нового%'
+	where name like '{tag}'
 	group by id, tag_type , category, name , calls_id
 ),
 
@@ -72,5 +72,5 @@ join_table as (
 select
 	count(distinct client_phone) as all_phone
 from join_table
-where source_medium in ('yandex_tm / cpc', 'mytarget_tm / cpc', 'Контекст_Яндекс_визитка / cpc')
+where source_medium in ('yandex_tm / cpc', 'mytarget_tm / cpc', '{source}')
 	and name is not null
