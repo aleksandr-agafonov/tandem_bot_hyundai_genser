@@ -13,29 +13,29 @@ except:
     pass
 
 # блок запросов за "вчера"
-get_adcost_yesterday = open('get_adcost_yesterday.sql')
-get_calls_yesterday = open('get_calls_yesterday.sql')
-get_target_calls_yesterday = open('get_target_calls_yesterday.sql')
+get_adcost_yesterday = open('get_adcost_yesterday.sql', 'rb')
+get_calls_yesterday = open('get_calls_yesterday.sql', 'rb')
+get_target_calls_yesterday = open('get_target_calls_yesterday.sql', 'rb')
 
 # блок запросов за "сегодня"
-get_adcost_today = open('get_adcost_today.sql')
-get_calls_today = open('get_calls_yesterday.sql')
-get_target_calls_today = open('get_target_calls_today.sql')
+get_adcost_today = open('get_adcost_today.sql', 'rb')
+get_calls_today = open('get_calls_yesterday.sql', 'rb')
+get_target_calls_today = open('get_target_calls_today.sql', 'rb')
 
 # Блок запросов за "этот месяц"
-get_adcost_current_month = open('get_adcost_current_month.sql')
-get_calls_current_month = open('get_calls_current_month.sql')
-get_target_calls_current_month = open('get_target_calls_current_month.sql')
+get_adcost_current_month = open('get_adcost_current_month.sql', 'rb')
+get_calls_current_month = open('get_calls_current_month.sql', 'rb')
+get_target_calls_current_month = open('get_target_calls_current_month.sql', 'rb')
 
 # Блок запросов за "прошлый месяц"
-get_adcost_previous_month = open('get_adcost_previous_month.sql')
-get_calls_previous_month = open('get_calls_previous_month.sql')
-get_target_calls_previous_month = open('get_target_calls_previous_month.sql')
+get_adcost_previous_month = open('get_adcost_previous_month.sql', 'rb')
+get_calls_previous_month = open('get_calls_previous_month.sql', 'rb')
+get_target_calls_previous_month = open('get_target_calls_previous_month.sql', 'rb')
 
 # Блок запросов за "эту неделю"
-get_adcost_current_week = open('get_adcost_current_week.sql')
-get_calls_current_week = open('get_calls_current_week.sql')
-get_target_calls_current_week = open('get_target_calls_current_week.sql')
+get_adcost_current_week = open('get_adcost_current_week.sql', 'rb')
+get_calls_current_week = open('get_calls_current_week.sql', 'rb')
+get_target_calls_current_week = open('get_target_calls_current_week.sql', 'rb')
 
 
 # функция подключения и чтения из AZURE
