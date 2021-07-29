@@ -188,7 +188,7 @@ async def yesterday_stat(callback_query: types.CallbackQuery):
 
     try:
         # разбираем содержимое функции
-        message = get_stat(get_adcost_yesterday.read(), get_calls_yesterday.read(), get_target_calls_yesterday.read())
+        message = get_stat(get_adcost_yesterday, get_calls_yesterday, get_target_calls_yesterday)
         stat_date = message[0][0]
         adcost = message[0][1]
         calls = message[1][1]
@@ -213,7 +213,7 @@ async def today_stat(callback_query: types.CallbackQuery):
     await bot.send_message(callback_query.from_user.id, 'Собираю информацию, подождите немного')
     try:
         # разбираем содержимое функции
-        message = get_stat(get_adcost_today.read(), get_calls_today.read(), get_target_calls_today.read())
+        message = get_stat(get_adcost_today, get_calls_today, get_target_calls_today)
         stat_date = message[0][0]
         adcost = message[0][1]
         calls = message[1][1]
@@ -251,7 +251,7 @@ async def current_month_stat(callback_query: types.CallbackQuery):
 
     try:
         # разбираем содержимое функции
-        message = get_stat(get_adcost_current_month.read(), get_calls_current_month.read(), get_target_calls_current_month.read())
+        message = get_stat(get_adcost_current_month, get_calls_current_month, get_target_calls_current_month)
         adcost = message[0][0]
         calls = message[1][0]
         target_calls = message[2][0]
@@ -275,7 +275,7 @@ async def previous_month_stat(callback_query: types.CallbackQuery):
 
     try:
         # разбираем содержимое функции
-        message = get_stat(get_adcost_previous_month.read(), get_calls_previous_month.read(), get_target_calls_previous_month.read())
+        message = get_stat(get_adcost_previous_month, get_calls_previous_month, get_target_calls_previous_month)
         adcost = message[0][0]
         calls = message[1][0]
         target_calls = message[2][0]
