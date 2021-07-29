@@ -66,11 +66,9 @@ join_table as (
 		on phones.id = tags.calls_id
 )
 
---select *
 select
 	simple_date,
 	count(distinct client_phone) as phones
 from join_table
 where source_medium in ('yandex_tm / cpc', 'mytarget_tm / cpc', 'Контекст_Яндекс_визитка / cpc')
---	and name is not null
 group by simple_date

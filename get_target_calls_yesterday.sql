@@ -69,7 +69,6 @@ join_table as (
 		on phones.id = tags.calls_id
 )
 
---select *
 select
 	simple_date,
 	max(hour) as max_hour,
