@@ -1,2 +1,2 @@
 unixodbc unixodbc-dev
-pyodbc
+python3-pyodbc
