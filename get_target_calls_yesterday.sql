@@ -43,7 +43,6 @@ tags as (
 		tag_type,
 		name
 	from calltouch_calls_tags
-	where name like '%Покупка Нового%'
 	group by id, tag_type , category, name , calls_id
 ),
 
