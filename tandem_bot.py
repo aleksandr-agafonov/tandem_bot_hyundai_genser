@@ -5,10 +5,10 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import FSMContext
 from azure_functions import get_stat  # функция для прогона запросов
 from azure_functions import get_adcost_yesterday, get_calls_yesterday, get_target_calls_yesterday  # запросы за вчера
-from azure_functions import get_adcost_today, get_calls_today, get_target_calls_today  # запросы за сегодня
-from azure_functions import get_adcost_current_month, get_calls_current_month, get_target_calls_current_month  # запросы за этот месяц
-from azure_functions import get_adcost_previous_month, get_calls_previous_month, get_target_calls_previous_month  # запросы за прошлый месяц
-from azure_functions import get_adcost_current_week, get_calls_current_week, get_target_calls_current_week  # запросы за эту неделю
+# from azure_functions import get_adcost_today, get_calls_today, get_target_calls_today  # запросы за сегодня
+# from azure_functions import get_adcost_current_month, get_calls_current_month, get_target_calls_current_month  # запросы за этот месяц
+# from azure_functions import get_adcost_previous_month, get_calls_previous_month, get_target_calls_previous_month  # запросы за прошлый месяц
+# from azure_functions import get_adcost_current_week, get_calls_current_week, get_target_calls_current_week  # запросы за эту неделю
 from states import Actions
 import requests
 from bs4 import BeautifulSoup
