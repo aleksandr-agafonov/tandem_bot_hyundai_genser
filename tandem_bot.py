@@ -203,7 +203,8 @@ async def yesterday_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(round(adcost / target_calls, 0)) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id, 'Чего изволите?', reply_markup=keyboard)
-    except:
+    except Exception as e:
+        print(e)
         await bot.send_message(callback_query.from_user.id, 'Возникли проблемы, попробуйте позже', reply_markup=keyboard)
 
 
@@ -239,7 +240,7 @@ async def today_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + cpl_op + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id, 'Чего изволите?', reply_markup=keyboard)
-    except ValueError as e:
+    except Exception as e:
         print(e)
         await bot.send_message(callback_query.from_user.id, 'Возникли проблемы, попробуйте позже', reply_markup=keyboard)
 
@@ -264,7 +265,8 @@ async def current_month_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(round(adcost / target_calls, 0)) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id, 'Чего изволите?', reply_markup=keyboard)
-    except:
+    except Exception as e:
+        print(e)
         await bot.send_message(callback_query.from_user.id, 'Возникли проблемы, попробуйте позже', reply_markup=keyboard)
 
 
@@ -288,7 +290,8 @@ async def previous_month_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(round(adcost / target_calls, 0)) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id, 'Чего изволите?', reply_markup=keyboard)
-    except:
+    except Exception as e:
+        print(e)
         await bot.send_message(callback_query.from_user.id, 'Возникли проблемы, попробуйте позже', reply_markup=keyboard)
 
 
@@ -312,7 +315,8 @@ async def current_week_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(round(adcost / target_calls, 0)) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id, 'Чего изволите?', reply_markup=keyboard)
-    except:
+    except Exception as e:
+        print(e)
         await bot.send_message(callback_query.from_user.id, 'Возникли проблемы, попробуйте позже', reply_markup=keyboard)
 
 
