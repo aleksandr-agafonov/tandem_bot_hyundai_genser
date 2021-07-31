@@ -42,10 +42,10 @@ def get_stat(adcost, calls, target_calls):
     target_calls = target_calls.replace('{source}', 'Контекст_Яндекс_визитка / cpc', 2)
     target_calls = target_calls.replace('{tag}', '%Покупка Нового%')
 
-    cnxn = pyodbc.connect(driver_string)
-    cursor = cnxn.cursor()
-
     try:
+        cnxn = pyodbc.connect(driver_string)
+        cursor = cnxn.cursor()
+
         # получаем расходы
         cursor.execute(adcost)
         adcost_row = cursor.fetchone()
@@ -74,4 +74,4 @@ def get_stat(adcost, calls, target_calls):
         return 'error'
 
 
-print(get_stat(get_adcost_yesterday, get_calls_yesterday, get_target_calls_yesterday))
+#print(get_stat(get_adcost_yesterday, get_calls_yesterday, get_target_calls_yesterday))
