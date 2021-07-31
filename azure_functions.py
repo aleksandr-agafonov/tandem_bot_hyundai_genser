@@ -50,21 +50,21 @@ def get_stat(adcost, calls, target_calls):
         cursor.execute(adcost)
         adcost_row = cursor.fetchone()
         if adcost_row is None:
-            adcost_row = 0
+            adcost_row = [0]
         print(adcost_row)
 
         # получаем звонки
         cursor.execute(calls)
         calls_row = cursor.fetchone()
         if calls_row is None:
-            calls_row = 0
+            calls_row = [0]
         print(calls_row)
 
         # получаем звонки ОП
         cursor.execute(target_calls)
         target_calls_row = cursor.fetchone()
         if target_calls_row is None:
-            target_calls_row = 0
+            target_calls_row = [0]
         print(target_calls_row)
 
         cnxn.close()
@@ -75,4 +75,4 @@ def get_stat(adcost, calls, target_calls):
         return 'error'
 
 
-#print(get_stat(get_adcost_yesterday, get_calls_yesterday, get_target_calls_yesterday))
+print(get_stat(get_adcost_yesterday, get_calls_yesterday, get_target_calls_yesterday))
