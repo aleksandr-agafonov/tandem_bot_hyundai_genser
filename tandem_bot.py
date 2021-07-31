@@ -319,9 +319,9 @@ async def current_week_stat(callback_query: types.CallbackQuery):
 # запрос IP адресс - скрытый функционал
 @dp.message_handler(commands=['ip'])
 async def get_my_ip(callback_query: types.CallbackQuery):
-    req = requests.get('https://api.myip.com/')
-    await bot.send_message(callback_query.from_user.id, req.json()['ip'])
-    await bot.send_message(callback_query.from_user.id, 'Чего изволите?', reply_markup=keyboard)
+    req = requests.get('http://ip-api.com/json/')
+    await bot.send_message(callback_query.from_user.id, req.json())
+
 
 
 executor.start_polling(dp)
