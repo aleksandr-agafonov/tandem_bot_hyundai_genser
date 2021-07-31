@@ -70,7 +70,8 @@ def get_stat(adcost, calls, target_calls):
         cnxn.close()
 
         return adcost_row, calls_row, target_calls_row
-    except:
+    except Exception as e:
+        print(e)
         return 'error'
 
 
