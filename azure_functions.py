@@ -1,78 +1,58 @@
 import pyodbc
+from datetime import datetime
 
 
 server = 'prsunvsu17.database.windows.net'
 database = 'mybi-hpnqdjf'
 username = 'owner-hpnqdjf'
 password = 'VxBvU9dYXyyr'
-driver_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password
-
-
-# блок запросов за "вчера"
-get_adcost_yesterday = open('get_adcost_yesterday.sql').read()
-get_calls_yesterday = open('get_calls_yesterday.sql').read()
-get_target_calls_yesterday = open('get_target_calls_yesterday.sql').read()
-
-# блок запросов за "сегодня"
-get_adcost_today = open('get_adcost_today.sql').read()
-get_calls_today = open('get_calls_yesterday.sql').read()
-get_target_calls_today = open('get_target_calls_today.sql').read()
-
-# Блок запросов за "этот месяц"
-get_adcost_current_month = open('get_adcost_current_month.sql').read()
-get_calls_current_month = open('get_calls_current_month.sql').read()
-get_target_calls_current_month = open('get_target_calls_current_month.sql').read()
-
-# Блок запросов за "прошлый месяц"
-get_adcost_previous_month = open('get_adcost_previous_month.sql').read()
-get_calls_previous_month = open('get_calls_previous_month.sql').read()
-get_target_calls_previous_month = open('get_target_calls_previous_month.sql').read()
-
-# Блок запросов за "эту неделю"
-get_adcost_current_week = open('get_adcost_current_week.sql').read()
-get_calls_current_week = open('get_calls_current_week.sql').read()
-get_target_calls_current_week = open('get_target_calls_current_week.sql').read()
+driver_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER=' \
+                + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password
 
 
 # функция подключения и чтения из AZURE
-def get_stat(adcost, calls, target_calls):
+def get_stat(query):
+
+    start_date = datetime.now()
 
     # меняем маркированные символы на латиницу
-    calls = calls.replace('{source}', 'Контекст_Яндекс_визитка / cpc')
-    target_calls = target_calls.replace('{source}', 'Контекст_Яндекс_визитка / cpc', 2)
-    target_calls = target_calls.replace('{tag}', '%Покупка Нового%')
+    query = query.replace('{visitka_yandex}', 'Контекст_Яндекс_визитка / cpc', 2)
+    query = query.replace('{op_tag}', '%покупка нового%')
+
+    connector = pyodbc.connect(driver_string)
+    connector.timeout = 30
+    cursor = connector.cursor()
 
     try:
-        cnxn = pyodbc.connect(driver_string)
-        cursor = cnxn.cursor()
-
         # получаем расходы
-        cursor.execute(adcost)
-        adcost_row = cursor.fetchone()
-        if adcost_row is None:
-            adcost_row = [0]
-        print(adcost_row)
+        cursor.execute(query)
+        row_data = cursor.fetchone()
 
-        # получаем звонки
-        cursor.execute(calls)
-        calls_row = cursor.fetchone()
-        if calls_row is None:
-            calls_row = [0]
-        print(calls_row)
+        try:
+            unique_calls_cpl = round(row_data[3] / row_data[1])
+            target_calls_cpl = round(row_data[3] / row_data[2])
+        except:
+            unique_calls_cpl, target_calls_cpl = 0, 0
 
-        # получаем звонки ОП
-        cursor.execute(target_calls)
-        target_calls_row = cursor.fetchone()
-        if target_calls_row is None:
-            target_calls_row = [0]
-        print(target_calls_row)
+        # кладем все что получили в словарь
+        stat_dict = dict()
+        stat_dict['date'] = row_data[0]
+        stat_dict['unique_calls'] = row_data[1]
+        stat_dict['target_calls'] = row_data[2]
+        stat_dict['adcost'] = row_data[3]
+        stat_dict['max_hour'] = row_data[4]
+        stat_dict['unique_calls_cpl'] = unique_calls_cpl
+        stat_dict['target_calls_cpl'] = target_calls_cpl
 
-        cnxn.close()
+        end_date = datetime.now()
+        print('Время обработки запроса: ', end_date - start_date)
 
-        return adcost_row, calls_row, target_calls_row
+        return stat_dict
     except Exception as e:
         print(e)
         return 'error'
+    finally:
+        connector.close()
 
-
-print(get_stat(get_adcost_yesterday, get_calls_yesterday, get_target_calls_yesterday))
+# test_query = open('previous_month_stat.sql').read()
+# print(get_stat(test_query))
