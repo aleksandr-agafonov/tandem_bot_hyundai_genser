@@ -14,8 +14,6 @@ unique_calls as (
 		on calltouch_calls_facts.dates_id = general_dates.id
 	left join calltouch_calls 
 		on calltouch_calls_facts.calls_id = calltouch_calls.id
-	left join calltouch_calls_tags
-		on calltouch_calls_facts.calls_id = calltouch_calls_tags.calls_id
 	where general_dates.simple_date 
 		between DATEADD(dd, -(DATEPART(dw, convert(date, GETDATE()))-1), convert(date, GETDATE()))
 		and DATEADD(dd, 7-(DATEPART(dw, convert(date, GETDATE()))), convert(date, GETDATE()))
