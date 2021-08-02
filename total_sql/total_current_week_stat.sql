@@ -16,9 +16,9 @@ unique_calls as (
 		on calltouch_calls_facts.calls_id = calltouch_calls.id
 	left join calltouch_calls_tags
 		on calltouch_calls_facts.calls_id = calltouch_calls_tags.calls_id
-	where general_dates.simple_date BETWEEN 
-		dateadd(day, -(datepart(weekday, dateadd(day, -1, convert(date, GETDATE())))), dateadd(day, 0, convert(date, GETDATE())))
-		and dateadd(day, 0, convert(date, GETDATE()))
+	where general_dates.simple_date 
+		between DATEADD(dd, -(DATEPART(dw, convert(date, GETDATE()))-1), convert(date, GETDATE()))
+		and DATEADD(dd, 7-(DATEPART(dw, convert(date, GETDATE()))), convert(date, GETDATE()))
 		and concat(general_traffic.source, ' / ', general_traffic.medium) in ('yandex_tm / cpc', 'mytarget_tm / cpc', '{visitka_yandex}')
 		and calltouch_calls_facts.account_id = 10534
 	group by 
@@ -38,9 +38,9 @@ target_calls as (
 		on calltouch_calls_facts.calls_id = calltouch_calls.id
 	left join calltouch_calls_tags
 		on calltouch_calls_facts.calls_id = calltouch_calls_tags.calls_id
-	where general_dates.simple_date BETWEEN 
-		dateadd(day, -(datepart(weekday, dateadd(day, -1, convert(date, GETDATE())))), dateadd(day, 0, convert(date, GETDATE())))
-		and dateadd(day, 0, convert(date, GETDATE()))
+	where general_dates.simple_date 
+		between DATEADD(dd, -(DATEPART(dw, convert(date, GETDATE()))-1), convert(date, GETDATE()))
+		and DATEADD(dd, 7-(DATEPART(dw, convert(date, GETDATE()))), convert(date, GETDATE()))
 		and concat(general_traffic.source, ' / ', general_traffic.medium) in ('yandex_tm / cpc', 'mytarget_tm / cpc', '{visitka_yandex}')
 		and lower(calltouch_calls_tags.name) like '{op_tag}'
 		and calltouch_calls_facts.account_id = 10534
@@ -56,8 +56,8 @@ yd_adcost as (
 	left join direct_campaigns_facts
 		on general_dates.id = direct_campaigns_facts.dates_id
 	where simple_date
-		between dateadd(day, -(datepart(weekday, dateadd(day, -1, convert(date, GETDATE())))), dateadd(day, 0, convert(date, GETDATE())))
-		and dateadd(day, 0, convert(date, GETDATE()))
+		between DATEADD(dd, -(DATEPART(dw, convert(date, GETDATE()))-1), convert(date, GETDATE()))
+		and DATEADD(dd, 7-(DATEPART(dw, convert(date, GETDATE()))), convert(date, GETDATE()))
 		and direct_campaigns_facts.account_id = 16924
 	group by
 		general_dates.simple_date
@@ -71,8 +71,8 @@ ad_adcost as (
 	left join adwords_campaigns_facts
 		on general_dates.id = adwords_campaigns_facts.dates_id
 	where simple_date
-		between dateadd(day, -(datepart(weekday, dateadd(day, -1, convert(date, GETDATE())))), dateadd(day, 0, convert(date, GETDATE())))
-		and dateadd(day, 0, convert(date, GETDATE()))
+		between DATEADD(dd, -(DATEPART(dw, convert(date, GETDATE()))-1), convert(date, GETDATE()))
+		and DATEADD(dd, 7-(DATEPART(dw, convert(date, GETDATE()))), convert(date, GETDATE()))
 		and adwords_campaigns_facts.account_id = 30156
 	group by
 		general_dates.simple_date, adwords_campaigns_facts.account_id
@@ -86,8 +86,8 @@ mt_adcost as (
 	left join mytarget_campaigns_facts
 		on general_dates.id = mytarget_campaigns_facts.dates_id
 	where simple_date
-		between dateadd(day, -(datepart(weekday, dateadd(day, -1, convert(date, GETDATE())))), dateadd(day, 0, convert(date, GETDATE())))
-		and dateadd(day, 0, convert(date, GETDATE()))
+		between DATEADD(dd, -(DATEPART(dw, convert(date, GETDATE()))-1), convert(date, GETDATE()))
+		and DATEADD(dd, 7-(DATEPART(dw, convert(date, GETDATE()))), convert(date, GETDATE()))
 		and mytarget_campaigns_facts.account_id = 33269
 	group by
 		general_dates.simple_date

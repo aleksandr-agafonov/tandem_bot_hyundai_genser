@@ -54,5 +54,5 @@ def get_stat(query):
     finally:
         connector.close()
 
-# test_query = open('previous_month_stat.sql').read()
+# test_query = open('ppc_sql\ppc_current_week_stat.sql').read()
 # print(get_stat(test_query))
