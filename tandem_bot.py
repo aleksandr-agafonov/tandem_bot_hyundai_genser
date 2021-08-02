@@ -8,14 +8,14 @@ from azure_functions import get_stat  # функция для прогона з�
 from keyboards import main_keyboard, total_keyboard, ppc_keyboard, target_keyboard  # ипорт клавиатур для меню и подменю
 
 
-# token = '1938283222:AAEe7C80RbtpAjW7BVBzt6qISW8VnzIpg0A'  # токен тестового бота
-token = '1944607173:AAF6YHKCarXvdwB9fozgs-S1Ogz91CSdE14'  # токен боевого бота
+token = '1938283222:AAEe7C80RbtpAjW7BVBzt6qISW8VnzIpg0A'  # токен тестового бота
+# token = '1944607173:AAF6YHKCarXvdwB9fozgs-S1Ogz91CSdE14'  # токен боевого бота
 bot = Bot(token=token)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
 
 # SQL запросы тотал
-total_yesterday_stat = open(r'total_sql\total_yesterday_stat.sql').read()
+total_yesterday_stat = open('total_sql\total_yesterday_stat.sql').read()
 total_today_stat = open(r'total_sql\total_today_stat.sql').read()
 total_current_week_stat = open(r'total_sql\total_current_week_stat.sql').read()
 total_current_month_stat = open(r'total_sql\total_current_month_stat.sql').read()
