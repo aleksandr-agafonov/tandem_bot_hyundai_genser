@@ -15,25 +15,25 @@ dp = Dispatcher(bot, storage=MemoryStorage())
 
 
 # SQL запросы тотал
-total_yesterday_stat = open('total_sql\total_yesterday_stat.sql').read()
-total_today_stat = open(r'total_sql\total_today_stat.sql').read()
-total_current_week_stat = open(r'total_sql\total_current_week_stat.sql').read()
-total_current_month_stat = open(r'total_sql\total_current_month_stat.sql').read()
-total_previous_month_stat = open(r'total_sql\total_previous_month_stat.sql').read()
+total_yesterday_stat = open('total_sql/total_yesterday_stat.sql').read()
+total_today_stat = open(r'total_sql/total_today_stat.sql').read()
+total_current_week_stat = open(r'total_sql/total_current_week_stat.sql').read()
+total_current_month_stat = open(r'total_sql/total_current_month_stat.sql').read()
+total_previous_month_stat = open(r'total_sql/total_previous_month_stat.sql').read()
 
 # SQL запросы по контексту
-ppc_yesterday_stat = open(r'ppc_sql\ppc_yesterday_stat.sql').read()
-ppc_today_stat = open(r'ppc_sql\ppc_today_stat.sql').read()
-ppc_current_week_stat = open(r'ppc_sql\ppc_current_week_stat.sql').read()
-ppc_current_month_stat = open(r'ppc_sql\ppc_current_month_stat.sql').read()
-ppc_previous_month_stat = open(r'ppc_sql\ppc_previous_month_stat.sql').read()
+ppc_yesterday_stat = open(r'ppc_sql/ppc_yesterday_stat.sql').read()
+ppc_today_stat = open(r'ppc_sql/ppc_today_stat.sql').read()
+ppc_current_week_stat = open(r'ppc_sql/ppc_current_week_stat.sql').read()
+ppc_current_month_stat = open(r'ppc_sql/ppc_current_month_stat.sql').read()
+ppc_previous_month_stat = open(r'ppc_sql/ppc_previous_month_stat.sql').read()
 
 # SQL запросы по таргетированной рекламе
-target_yesterday_stat = open(r'target_sql\target_yesterday_stat.sql').read()
-target_today_stat = open(r'target_sql\target_today_stat.sql').read()
-target_current_week_stat = open(r'target_sql\target_current_week_stat.sql').read()
-target_current_month_stat = open(r'target_sql\target_current_month_stat.sql').read()
-target_previous_month_stat = open(r'target_sql\target_previous_month_stat.sql').read()
+target_yesterday_stat = open(r'target_sql/target_yesterday_stat.sql').read()
+target_today_stat = open(r'target_sql/target_today_stat.sql').read()
+target_current_week_stat = open(r'target_sql/target_current_week_stat.sql').read()
+target_current_month_stat = open(r'target_sql/target_current_month_stat.sql').read()
+target_previous_month_stat = open(r'target_sql/target_previous_month_stat.sql').read()
 
 
 # Приветственный блок
