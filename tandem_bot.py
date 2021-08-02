@@ -281,7 +281,7 @@ async def get_ppc_today_stat(callback_query: types.CallbackQuery):
 
         await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id,
-                               'Расход на: ' + str(message['date']) + '\n' +
+                               'Расход на: ' + str(message['date']) + ' ' + str(message['max_hour']) + ' часов' + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
                                'Всего уникальных звонков: ' + str(message['unique_calls']) + '\n' +
                                'CPL: ' + str(message['unique_calls_cpl']) + ' руб.' + '\n' +
@@ -354,7 +354,7 @@ async def get_ppc_current_month_stat(callback_query: types.CallbackQuery):
                                reply_markup=ppc_keyboard)
 
 
-# статистика из zure за прошлый месяц по контексту
+# статистика из azure за прошлый месяц по контексту
 @dp.callback_query_handler(lambda c: c.data == 'c_ppc_previous_month_stat', state=Actions.ppc_ad_state)
 async def get_ppc_previous_month_stat(callback_query: types.CallbackQuery):
     await bot.send_message(callback_query.from_user.id, 'Собираю информацию, подождите немного')
@@ -429,7 +429,7 @@ async def get_target_today_stat(callback_query: types.CallbackQuery):
 
         await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id,
-                               'Расход на: ' + str(message['date']) + '\n' +
+                               'Расход на: ' + str(message['date']) + ' ' + str(message['max_hour']) + ' часов' + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
                                'Всего уникальных звонков: ' + str(message['unique_calls']) + '\n' +
                                'CPL: ' + str(message['unique_calls_cpl']) + ' руб.' + '\n' +
