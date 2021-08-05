@@ -91,7 +91,7 @@ async def reset_state(callback_query: types.CallbackQuery, state: FSMContext):
 # пререходим к клавиатуре TOTAL
 @dp.callback_query_handler(lambda c: c.data == 'c_switch_total_result')
 async def show_total_result_menu(callback_query: types.CallbackQuery, state: FSMContext):
-    await bot.send_message(callback_query.from_user.id, 'Результаты по всем каналам', reply_markup=total_keyboard)
+    await bot.send_message(callback_query.from_user.id, 'Выберете пункт меню', reply_markup=total_keyboard)
     await Actions.total_ad_state.set()
 
 
@@ -105,6 +105,7 @@ async def get_total_yesterday_stat(callback_query: types.CallbackQuery):
         message = get_stat(total_yesterday_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по всем каналам')
         await bot.send_message(callback_query.from_user.id,
                                'Расход на: ' + str(message['date']) + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -114,7 +115,7 @@ async def get_total_yesterday_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по всем каналам',
+                               'Выберете пункт меню',
                                reply_markup=total_keyboard)
     except Exception as e:
         print(e)
@@ -133,6 +134,7 @@ async def get_total_today_stat(callback_query: types.CallbackQuery):
         message = get_stat(total_today_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по всем каналам')
         await bot.send_message(callback_query.from_user.id,
                                'Расход на: ' + str(message['date']) + ' ' + str(message['max_hour']) + ' часов' + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -142,7 +144,7 @@ async def get_total_today_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по всем каналам',
+                               'Выберете пункт меню',
                                reply_markup=total_keyboard)
     except Exception as e:
         print(e)
@@ -161,6 +163,7 @@ async def get_total_current_week_stat(callback_query: types.CallbackQuery):
         message = get_stat(total_current_week_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по всем каналам')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за эту неделю' + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -189,6 +192,7 @@ async def get_total_current_month_stat(callback_query: types.CallbackQuery):
         message = get_stat(total_current_month_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по всем каналам')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за этот месяц' + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -198,7 +202,7 @@ async def get_total_current_month_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по всем каналам',
+                               'Выберете пункт меню',
                                reply_markup=total_keyboard)
     except Exception as e:
         print(e)
@@ -217,6 +221,7 @@ async def get_total_previous_month_stat(callback_query: types.CallbackQuery):
         message = get_stat(total_previous_month_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по всем каналам')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за прошлый месяц' + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -226,7 +231,7 @@ async def get_total_previous_month_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по всем каналам',
+                               'Выберете пункт меню',
                                reply_markup=total_keyboard)
     except Exception as e:
         print(e)
@@ -238,7 +243,7 @@ async def get_total_previous_month_stat(callback_query: types.CallbackQuery):
 # пререходим к клавиатуре по контексту
 @dp.callback_query_handler(lambda c: c.data == 'c_switch_ppc_result')
 async def show_ppc_result_menu(callback_query: types.CallbackQuery, state: FSMContext):
-    await bot.send_message(callback_query.from_user.id, 'Результаты по контекстной рекламе', reply_markup=ppc_keyboard)
+    await bot.send_message(callback_query.from_user.id, 'Выберете пункт меню', reply_markup=ppc_keyboard)
     await Actions.ppc_ad_state.set()
 
 
@@ -252,6 +257,7 @@ async def get_ppc_yesterday_stat(callback_query: types.CallbackQuery):
         message = get_stat(ppc_yesterday_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по контекстной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход на: ' + str(message['date']) + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -261,7 +267,7 @@ async def get_ppc_yesterday_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по контекстной рекламе',
+                               'Выберете пункт меню',
                                reply_markup=ppc_keyboard)
     except Exception as e:
         print(e)
@@ -280,6 +286,7 @@ async def get_ppc_today_stat(callback_query: types.CallbackQuery):
         message = get_stat(ppc_today_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по контекстной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход на: ' + str(message['date']) + ' ' + str(message['max_hour']) + ' часов' + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -289,7 +296,7 @@ async def get_ppc_today_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по контекстной рекламе',
+                               'Выберете пункт меню',
                                reply_markup=ppc_keyboard)
     except Exception as e:
         print(e)
@@ -308,6 +315,7 @@ async def get_ppc_current_week_stat(callback_query: types.CallbackQuery):
         message = get_stat(ppc_current_week_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по контекстной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за эту неделю' + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -317,7 +325,7 @@ async def get_ppc_current_week_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по контекстной рекламе',
+                               'Выберете пункт меню',
                                reply_markup=ppc_keyboard)
     except Exception as e:
         print(e)
@@ -336,6 +344,7 @@ async def get_ppc_current_month_stat(callback_query: types.CallbackQuery):
         message = get_stat(ppc_current_month_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по контекстной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за текущий месяц' + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -345,7 +354,7 @@ async def get_ppc_current_month_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по контекстной рекламе',
+                               'Выберете пункт меню',
                                reply_markup=ppc_keyboard)
     except Exception as e:
         print(e)
@@ -364,6 +373,7 @@ async def get_ppc_previous_month_stat(callback_query: types.CallbackQuery):
         message = get_stat(ppc_previous_month_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по контекстной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за прошлый месяц' + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -373,7 +383,7 @@ async def get_ppc_previous_month_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по контекстной рекламе',
+                               'Выберете пункт меню',
                                reply_markup=ppc_keyboard)
     except Exception as e:
         print(e)
@@ -386,7 +396,7 @@ async def get_ppc_previous_month_stat(callback_query: types.CallbackQuery):
 @dp.callback_query_handler(lambda c: c.data == 'c_switch_target_result')
 async def show_target_result_menu(callback_query: types.CallbackQuery, state: FSMContext):
     await bot.send_message(callback_query.from_user.id,
-                           'Результаты по таргетированной рекламе', reply_markup=target_keyboard)
+                           'Выберете пункт меню', reply_markup=target_keyboard)
     await Actions.target_ad_state.set()
 
 
@@ -400,6 +410,7 @@ async def get_target_yesterday_stat(callback_query: types.CallbackQuery):
         message = get_stat(target_yesterday_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по таргетированной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход на: ' + str(message['date']) + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -409,7 +420,7 @@ async def get_target_yesterday_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по таргетированной рекламе',
+                               'Выберете пункт меню',
                                reply_markup=target_keyboard)
     except Exception as e:
         print(e)
@@ -428,6 +439,7 @@ async def get_target_today_stat(callback_query: types.CallbackQuery):
         message = get_stat(target_today_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по таргетированной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход на: ' + str(message['date']) + ' ' + str(message['max_hour']) + ' часов' + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -437,7 +449,7 @@ async def get_target_today_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по таргетированной рекламе',
+                               'Выберете пункт меню',
                                reply_markup=target_keyboard)
     except Exception as e:
         print(e)
@@ -456,6 +468,7 @@ async def get_target_current_week_stat(callback_query: types.CallbackQuery):
         message = get_stat(target_current_week_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по таргетированной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за эту неделю' + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -465,7 +478,7 @@ async def get_target_current_week_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по контекстной рекламе',
+                               'Выберете пункт меню',
                                reply_markup=target_keyboard)
     except Exception as e:
         print(e)
@@ -484,6 +497,7 @@ async def get_target_current_month_stat(callback_query: types.CallbackQuery):
         message = get_stat(target_current_month_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по таргетированной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход на текущий месяц' + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -493,7 +507,7 @@ async def get_target_current_month_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по таргетированной рекламе',
+                               'Выберете пункт меню',
                                reply_markup=target_keyboard)
     except Exception as e:
         print(e)
@@ -512,6 +526,7 @@ async def get_target_previous_month_stat(callback_query: types.CallbackQuery):
         message = get_stat(target_previous_month_stat)
 
         await bot.answer_callback_query(callback_query.id)
+        await bot.send_message(callback_query.from_user.id, 'Результаты по таргетированной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за прошлый месяц' + '\n' +
                                'Составляет: ' + str(round(message['adcost'], 0)) + ' руб.' + '\n' +
@@ -521,7 +536,7 @@ async def get_target_previous_month_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по таргетированной рекламе',
+                               'Выберете пункт меню',
                                reply_markup=target_keyboard)
     except Exception as e:
         print(e)
