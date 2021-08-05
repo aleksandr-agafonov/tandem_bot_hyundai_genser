@@ -173,7 +173,7 @@ async def get_total_current_week_stat(callback_query: types.CallbackQuery):
                                'CPL ОП: ' + str(message['target_calls_cpl']) + ' руб.'
                                )
         await bot.send_message(callback_query.from_user.id,
-                               'Результаты по всем каналам',
+                               'Выберете пункт меню',
                                reply_markup=total_keyboard)
     except Exception as e:
         print(e)
