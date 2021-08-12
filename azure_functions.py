@@ -27,9 +27,6 @@ def get_stat(query):
         # получаем расходы
         cursor.execute(query)
         row_data = cursor.fetchone()
-        print(row_data)
-        print(row_data[3], row_data[1])
-        print(row_data[3], row_data[2])
 
         try:
             unique_calls_cpl = round(row_data[3] / row_data[1])
