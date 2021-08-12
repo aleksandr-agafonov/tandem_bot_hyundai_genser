@@ -8,8 +8,8 @@ from azure_functions import get_stat  # функция для прогона з�
 from keyboards import main_keyboard, total_keyboard, ppc_keyboard, target_keyboard  # ипорт клавиатур для меню и подменю
 
 
-# token = '1938283222:AAEe7C80RbtpAjW7BVBzt6qISW8VnzIpg0A'  # токен тестового бота
-token = '1944607173:AAF6YHKCarXvdwB9fozgs-S1Ogz91CSdE14'  # токен боевого бота
+token = '1938283222:AAEe7C80RbtpAjW7BVBzt6qISW8VnzIpg0A'  # токен тестового бота
+# token = '1944607173:AAF6YHKCarXvdwB9fozgs-S1Ogz91CSdE14'  # токен боевого бота
 bot = Bot(token=token)
 dp = Dispatcher(bot, storage=MemoryStorage())
 

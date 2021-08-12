@@ -27,12 +27,21 @@ def get_stat(query):
         # получаем расходы
         cursor.execute(query)
         row_data = cursor.fetchone()
+        print(row_data)
+        print(row_data[3], row_data[1])
+        print(row_data[3], row_data[2])
 
         try:
             unique_calls_cpl = round(row_data[3] / row_data[1])
+        except:
+            unique_calls_cpl = 0
+
+
+        try:
             target_calls_cpl = round(row_data[3] / row_data[2])
         except:
-            unique_calls_cpl, target_calls_cpl = 0, 0
+            target_calls_cpl = 0
+
 
         # кладем все что получили в словарь
         stat_dict = dict()
@@ -54,5 +63,5 @@ def get_stat(query):
     finally:
         connector.close()
 
-# test_query = open('ppc_sql\ppc_current_week_stat.sql').read()
+# test_query = open('total_sql/total_yesterday_stat.sql').read()
 # print(get_stat(test_query))
