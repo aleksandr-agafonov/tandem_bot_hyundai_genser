@@ -47,7 +47,7 @@ async def say_hello(message: types.Message, state: FSMContext):
 # Блок запросов Яндекса
 @dp.callback_query_handler(lambda c: c.data == 'c_show_yandex_add')
 async def get_yandex_add_query(callback_query: types.CallbackQuery):
-    await bot.answer_callback_query(callback_query.id)
+    # await bot.answer_callback_query(callback_query.id)
     await bot.send_message(callback_query.from_user.id, 'Введи поисковой запрос для Yandex')
     await Actions.yandex_add_state.set()
 
@@ -104,7 +104,7 @@ async def get_total_yesterday_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(total_yesterday_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по всем каналам')
         await bot.send_message(callback_query.from_user.id,
                                'Расход на: ' + str(message['date']) + '\n' +
@@ -133,7 +133,7 @@ async def get_total_today_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(total_today_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по всем каналам')
         await bot.send_message(callback_query.from_user.id,
                                'Расход на: ' + str(message['date']) + ' ' + str(message['max_hour']) + ' часов' + '\n' +
@@ -162,7 +162,7 @@ async def get_total_current_week_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(total_current_week_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по всем каналам')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за эту неделю' + '\n' +
@@ -191,7 +191,7 @@ async def get_total_current_month_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(total_current_month_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по всем каналам')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за этот месяц' + '\n' +
@@ -220,7 +220,7 @@ async def get_total_previous_month_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(total_previous_month_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по всем каналам')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за прошлый месяц' + '\n' +
@@ -256,7 +256,7 @@ async def get_ppc_yesterday_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(ppc_yesterday_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по контекстной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход на: ' + str(message['date']) + '\n' +
@@ -285,7 +285,7 @@ async def get_ppc_today_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(ppc_today_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по контекстной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход на: ' + str(message['date']) + ' ' + str(message['max_hour']) + ' часов' + '\n' +
@@ -314,7 +314,7 @@ async def get_ppc_current_week_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(ppc_current_week_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по контекстной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за эту неделю' + '\n' +
@@ -343,7 +343,7 @@ async def get_ppc_current_month_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(ppc_current_month_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по контекстной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за текущий месяц' + '\n' +
@@ -372,7 +372,7 @@ async def get_ppc_previous_month_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(ppc_previous_month_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по контекстной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за прошлый месяц' + '\n' +
@@ -409,7 +409,7 @@ async def get_target_yesterday_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(target_yesterday_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по таргетированной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход на: ' + str(message['date']) + '\n' +
@@ -438,7 +438,7 @@ async def get_target_today_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(target_today_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по таргетированной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход на: ' + str(message['date']) + ' ' + str(message['max_hour']) + ' часов' + '\n' +
@@ -467,7 +467,7 @@ async def get_target_current_week_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(target_current_week_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по таргетированной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за эту неделю' + '\n' +
@@ -496,7 +496,7 @@ async def get_target_current_month_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(target_current_month_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по таргетированной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход на текущий месяц' + '\n' +
@@ -525,7 +525,7 @@ async def get_target_previous_month_stat(callback_query: types.CallbackQuery):
         # разбираем содержимое функции
         message = get_stat(target_previous_month_stat)
 
-        await bot.answer_callback_query(callback_query.id)
+        # await bot.answer_callback_query(callback_query.id)
         await bot.send_message(callback_query.from_user.id, 'Результаты по таргетированной рекламе')
         await bot.send_message(callback_query.from_user.id,
                                'Расход за прошлый месяц' + '\n' +
